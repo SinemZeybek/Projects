@@ -1,0 +1,38 @@
+Dedektif Oyunu
+
+Bu görevde, bir dedektif rolüne girerek kaybolan bir nesneyi bulmaya çalıştığımız, 
+terminal üzerinden çalışan basit ama eğlenceli bir Python oyunu geliştireceksin. 
+
+Hikaye:
+Bir müzede gizemli bir hırsızlık gerçekleşti. Değerli bir nesne ortadan kayboldu. 
+Sen, bu davayı çözmekle görevli bir dedektifsin. Farklı mekanlara gidip ipuçları toplayacak, 
+karakterlerle konuşarak şüphelileri değerlendirecek ve sonunda suçluyu ve çalınan nesneyi tahmin edeceksin.
+
+Görev Adımları:
+
+### 1. Oyun Başlangıcı
+- Kullanıcıdan dedektif adı alınmalı.
+- Giriş senaryosu yazdırılmalı.
+
+### 2. Mekanlar ve İpuçları
+- En az 3 farklı mekan oluştur (örneğin: Kütüphane, Laboratuvar...).
+- Her mekanda kullanıcıya rastgele bir ipucu verilmeli.
+- Tüm ipuçları bir listede toplanmalı.
+
+### 3. Karakterlerle Konuşma
+- En az 4 karakter tanımla.
+- Her karakter farklı bir bilgi versin.
+- Bilgiler sözlük yapısında tutulmalı.
+
+### 4. Suçluyu Tahmin Etme
+- Kullanıcıdan suçlu ve çalınan nesne ile ilgili tahmin alınmalı.
+- Doğru tahmin edilirse "kazandın", yanlışsa "kaybettin" mesajı verilmeli.
+
+
+- Değişkenler
+- Listeler ve sözlükler
+- Koşul ifadeleri (if/elif/else)
+- Döngüler (for/while)
+- Fonksiyonlar
+- Modül kullanımı (`random`, `time`)
+
