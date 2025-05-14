@@ -11,7 +11,7 @@ def start():  # Yardımcı fonskiyonlar
     time.sleep(3)
     return name 
 
-def locations(clues):  # Mekanlar ve Ipucları
+def locations():  # Mekanlar ve Ipucları
     locations = ["Kafeterya", "Laboratuar", "Sanat Galerisi"]
     clue_list = [
         "Hımm... Bu kapının kilidi zorlanmış.",
@@ -28,7 +28,6 @@ def locations(clues):  # Mekanlar ve Ipucları
         clue = random.choice(clue_list) 
         clue_list.remove(clue)
         print(f"{clue}")
-        clues.append(clue)
         time.sleep(2)
 
 def talking_to_characters(): 
@@ -78,8 +77,7 @@ def guess_the_criminal():
 
 def game(): #main function
     name = start()
-    clues = []
-    locations(clues)
+    locations()
     talking_to_characters()
     guess_the_criminal()
 
