@@ -1,6 +1,31 @@
 import time 
 import random
 
+lives = 3
+the_criminal = "Temizlikçi" 
+
+# Mekanlar ve Ipucları
+locations = {
+        "Kafeterya": {
+            "characters": {
+                "Güvenlik Görevlisi": "Gece laboratuarın ışığını açık gördüm ama malesef oradaki kameralar dün kayıt yapmamış."
+            },
+            "clue": "Çöp kutusunun yanında yerde bir adet siyah eldiven var."
+        },
+        "Laboratuar": {
+            "characters": {
+                "Temizlikçi": "Sabah galerideki vitrini silerken üzerinde çizikler fark ettim"
+            },
+            "clue": "Hımm... Bu kapının kilidi zorlanmış."
+        },
+        "Sanat Galerisi": {
+            "characters": {
+                "Ziyaretçi": "Ben sanatla ilgileniyorum, vazoların olduğu yere bakmadım bile."
+            },
+            "clue": "Yerler çok tozlu."
+        },
+    }
+
 
 def start():  # Yardımcı fonskiyonlar 
     print("\nDedektif oyunuma hoşgeldin!\n")
@@ -11,40 +36,77 @@ def start():  # Yardımcı fonskiyonlar
     time.sleep(3)
     return name 
 
-def locations():  # Mekanlar ve Ipucları
-    locations = ["Kafeterya", "Laboratuar", "Sanat Galerisi"]
-    clue_list = [
-        "Hımm... Bu kapının kilidi zorlanmış.",
-        "Yerler çok tozlu.",
-        "Ahh burnuma çok güçlü, kimyasal bir koku geldi.",
-        "Köşede 1 adet kablosuz kulaklık teki bulundu. Kime ait henüz bilinmiyor.",
-        "Yerde küçük kırık seramik parçaları var."
-        ]
-    print("\nMüzeyi yavaş yavaş gezmeye başlıyorsun...\n")
-    time.sleep(1)
-    for a_location in locations: 
-        print(f"Şimdi {a_location} inceleniyor...") 
-        time.sleep(3)
-        clue = random.choice(clue_list) 
-        clue_list.remove(clue)
-        print(f"{clue}")
-        time.sleep(2)
 
-def talking_to_characters(): 
-    characters = {
-        "Güvenlik Görevlisi": "Gece laboratuarın ışığı açıktı ama herhangi bir giriş kaydı yok.",
-        "Müze Sorumlusu": "Dün geceden hiçbir kamera kaydımız yok. Kameralar çalışmıyordu.",
-        "Temizlikçi": "Bir yerlerde bir kulaklık gördüm, sanırım bizim güvenlik görevlisine ait.",
-        "Bir Ziyaretçi": "Çocuklar koştururken birine çarptılar ve o kişinin elinden, değişik kimyasal kokulu bir şey düştü."
-    }
+def pick_a_location(visited):
+    remaining_locations = [location for location in locations if location not in visited]
+    if not remaining_locations: 
+        return None
+    
+    print("Ziyaret edebileceğin mekanlar:")
+    for location in remaining_locations:
+        print(f"- {location}")
+    choice = input ("Hangi mekanı görmek istiyorsun?").strip().title()
 
-    print("\nMüzede bulunan birkaç kişiyle konuşuyorsun... \n")
+    if choice in remaining_locations:
+        return choice
+    else: 
+        print("Lütfen geçerli bir mekan ismi girin.")
+        return pick_a_location(visited)
+    
+def visit_location(location):
+    print(f"{location} incelenmeye başlanıyor...")
     time.sleep(2)
-    for person, info in characters.items():
-        print(f"{person} dedi ki: {info}")
-        time.sleep(4)
-    print()
-    return characters
+
+    clue = locations[location]["clue"]
+    print(f"{clue}")
+    time.sleep(1)
+
+    talk = input(f"{location} içinde birini gördün. Konuşmak ister misin? (evet/hayır):").strip().lower()
+    if talk == "evet":
+        characters = locations[location]["characters"]
+        print("\nKonuştuğun kişi:")
+        time.sleep(1)
+        for name, info in characters.items():
+            print(f"{name}: {info}")
+            time.sleep(2)
+    else:
+        print("Kimseyle konuşmadan devam ediyorsun.")
+        time.sleep(1)
+
+
+def make_guess():
+    global lives
+    guess = input("\nSuçlunun kim olduğunu düşünüyorsun? ").strip()
+
+    if guess.lower() == the_criminal.lower():
+        print("\nTebrikler! Olayı çözdün ve suçluyu yakaladın!")
+        return True
+    else:
+        lives -= 1 
+        print(f"\nMalesef yanlış tahmin! Kalan can: {lives}\n")
+        if lives == 0:
+            print("\nMalesef yanlış tahminde bulundun ve suçlu kaçmayı başardı. Belki bir dahaki sefere... Seni arar mıyız bilmiyorum tabii.")
+            print(f"Asıl suçlu: {the_criminal}")
+            exit()
+        return False
+    
+
+def menu_after_visits():
+    while True:
+        print("Şimdi ne yapmak istiyorsun?")
+        print("1. Müze Müdürü ile konuş (tahmin yap)")
+        print("2. İncelemeye devam et.") 
+        choice = input("Seçimin (1/2) :").strip()
+        if choice == "1":
+            if make_guess():
+                exit()
+            else:
+                return
+        elif choice == "2":
+            return
+        else:
+            print("Geçersiz yanıt. Lütfen 1 veya 2 giriniz.")
+
 
 
 def guess_the_criminal(): 
@@ -52,36 +114,32 @@ def guess_the_criminal():
     time.sleep(1)
     print("Şimdi suçlunun kim olduğunu ve ne çaldığını tahmin etme zamanı!\nUnutma, kazanmak için ikisini de doğru tahmin etmen gerekiyor.")
     time.sleep(2)
-    
-    possible_criminals = ["Güvenlik Görevlisi", "Müze Sorumlusu", "Temizlikçi", "Ziyaretçi"]
 
-    the_criminal = random.choice(possible_criminals)
-    the_object = "Vazo"
+    guess_the_criminal = input("Suçlunun kim olduğunu düşünüyorsun?").strip()
 
-    guess_the_criminal = input("Suçlunun kim olduğunu düşünüyorsun?")
-    guess_the_object = input("Suçlu ne çalmış olabilir?")
 
-    if guess_the_criminal.lower() == the_criminal.lower() and guess_the_object.lower() == the_object.lower():
+    if guess_the_criminal.lower() == the_criminal.lower():
        print("\nTebrikler! Olayı çözdün ve suçluyu yakaladın!")
-
-    elif guess_the_criminal.lower() == the_criminal.lower() and guess_the_object.lower() != the_object.lower():
-       print(f"\nSuçluyu doğru tahmin ettin ama üzerinde {guess_the_object} bulunamadı. Çaldığı nesne: {the_object}. Olsun yiine de iyi denemeydi! Bir dahaki sefer daha dikkatli ol!")
-    
-    elif guess_the_criminal.lower() != the_criminal.lower() and guess_the_object.lower() == the_object.lower(): 
-        print(f"\nÇalınan nesneyi buldun ama yanlış kişiyi tutuklamaya çalıştın! Asıl suçlu: {the_criminal} idi. Olsun yine de iyi denemeydi. Bir dahaki sefer daha dikkatli ol!")
-
     else: 
         print("\nMalesef yanlış tahminde bulundun ve suçlu kaçmayı başardı. Belki bir dahaki sefere... Seni arar mıyız bilmiyorum tabii.")
-        print(f"Asıl suçlu: {the_criminal} ve Çalınan Nesne: {the_object}")
+        print(f"Asıl suçlu: {the_criminal}")
               
 
 def game(): #main function
+    global lives
     name = start()
-    locations()
-    talking_to_characters()
+    visited = []
+
+    while len(visited) < len(locations):
+        selected = pick_a_location(visited)
+        if selected:
+            visit_location(selected)
+            visited.append(selected)
+            menu_after_visits()
+
     guess_the_criminal()
 
-    
+
 
 if __name__ == "__main__":
     game()
