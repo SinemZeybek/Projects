@@ -1,5 +1,4 @@
 import time 
-import random
 
 lives = 3
 the_criminal = "Temizlikçi" 
@@ -32,7 +31,7 @@ def start():  # Yardımcı fonskiyonlar
     name = input("Dedektif, lütfen adınızı giriniz: ")
     time.sleep(1)
     print(f"Tanıştığımıza memnun oldum Dedektif {name}.")
-    print(f"\nBu kadar kısa zamanda gelebilmenize çok sevindim! \nNe yazık ki dün gece müzemizden çok değerli bir parça çalındı ve bunu bulmamız için sizin yardımınıza ihtiyacımız var.\n")
+    print(f"\nBu kadar kısa zamanda gelebilmenize çok sevindim! \nNe yazık ki dün gece müzemizden çok değerli bir vazo çalındı ve bunu bulmamız için sizin yardımınıza ihtiyacımız var.\n")
     time.sleep(3)
     return name 
 
@@ -61,17 +60,26 @@ def visit_location(location):
     print(f"{clue}")
     time.sleep(1)
 
-    talk = input(f"{location} içinde birini gördün. Konuşmak ister misin? (evet/hayır):").strip().lower()
-    if talk == "evet":
-        characters = locations[location]["characters"]
-        print("\nKonuştuğun kişi:")
-        time.sleep(1)
-        for name, info in characters.items():
+    while True:
+        talk = input(f"{location} içinde birini gördün. Konuşmak ister misin? (evet/hayır):").strip().lower()
+      
+        if talk == "evet":
+           characters = locations[location]["characters"]
+           print("\nKonuştuğun kişi:")
+           time.sleep(1)
+           for name, info in characters.items():
             print(f"{name}: {info}")
             time.sleep(2)
-    else:
-        print("Kimseyle konuşmadan devam ediyorsun.")
-        time.sleep(1)
+           break
+        elif talk == "hayır":
+            print("Kimseyle konuşmadan devam ediyorsun.")
+            time.sleep(1)
+            break
+        
+        else:
+            print("Lütfen geçerli bir yanıt giriniz. (evet/hayır)")
+            time.sleep(1)
+    
 
 
 def make_guess():
