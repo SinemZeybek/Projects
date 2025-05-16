@@ -22,6 +22,11 @@ print(zaman)
 zaman = time.strftime("%d/%m/%Y %H:%M:%S")  # % - day/month/Year Hour:Minute:Seconds
 print(zaman)
 
+        # %Y : Year, %m : month, %d : day, %H : hour, %M : minute, %S : second, %z : timezone offset from UTC
+        # Locale`s  %a : abbreviated weekday name, %A : full weekday name, %b : abbreviated month name, %B : full month name
+        # %c : date and time representation, %I : hour 12h clock, %p : am or pm
+        
+
 #datetime
 from datetime import date
 from datetime import datetime
