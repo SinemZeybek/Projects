@@ -44,7 +44,7 @@ def pick_a_location(visited):
     print("Ziyaret edebileceğin mekanlar:")
     for location in remaining_locations:
         print(f"- {location}")
-    choice = input ("Hangi mekanı görmek istiyorsun?").strip().title()
+    choice = input("Hangi mekanı görmek istiyorsun?\n").strip().title()
 
     if choice in remaining_locations:
         return choice
