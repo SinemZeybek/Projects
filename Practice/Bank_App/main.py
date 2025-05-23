@@ -31,8 +31,8 @@ def main():
             deposit_money(username, amount)
 
         elif choice == "4":
-            balance = get_balance(username)
-            credit_score_status(username, balance)
+            balance = get_balance(username)   #balance`i getirmemistim basta calismadi.
+            credit_score_status(balance)
 
         elif choice == "5":
             print("Exiting...")
@@ -42,4 +42,3 @@ def main():
             print("Please choose one of these numbers: 1/2/3/4/5")
 
 main()
-

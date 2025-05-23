@@ -71,5 +71,3 @@ with open("text_for_prac6.txt") as okunacak:
     with open("text2_for_prac6.txt", "w") as yazilacak:
         for satir in okunacak:
             yazilacak.write(satir)
-
-        

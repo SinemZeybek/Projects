@@ -5,7 +5,7 @@ from datetime import datetime
 def get_balance(username):
     with open("users.json", "r") as file:
         users = json.load(file)
-    return float(users[username]["balance"])
+    return float(users[username]["balance"])     #burada basta float yerine int kullandim, fark eder mi? 
 
 
 
@@ -13,9 +13,10 @@ def update_balance(username, amount):
     with open("users.json", "r") as file:
         users = json.load(file)
 
-    users[username]["balance"] += amount
+    users[username]["balance"] += amount     #sadece ["balance"] yazsak olur muydu?
 
     with open("users.json", "w") as file:
+
         json.dump(users, file, indent=4) 
 
 
@@ -23,7 +24,7 @@ def update_balance(username, amount):
 
 def logs(username, action):
     with open("{username}.txt", "a") as logs_file:
-        logs_file.write(f"{datetime.now()} - {action}\n")
+        logs_file.write(f"{datetime.now()} - {username} - {action}\n")  #username wasnt showing in logs.
 
 
 

@@ -1,4 +1,3 @@
-from bank import get_balance
 
 
 def credit_score_calculation(balance, max_balance = 2000000):
