@@ -23,7 +23,7 @@ def update_balance(username, amount):
 
 
 def logs(username, action):
-    with open("{username}.txt", "a") as logs_file:
+    with open(f"logs/{username}.txt", "a") as logs_file:
         logs_file.write(f"{datetime.now()} - {username} - {action}\n")  #username wasnt showing in logs.
 
 

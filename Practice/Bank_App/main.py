@@ -1,10 +1,10 @@
-from authorization import login, get_user_data
-from bank import get_balance, update_balance, logs, withdraw_money, deposit_money
-from credit import credit_score_calculation, credit_options, credit_score_status
+from authorization import login
+from bank import get_balance, withdraw_money, deposit_money
+from credit import credit_score_status
 
 def main(): 
     username = login()
-    if username is None:
+    if username == None:
        return
 
 
