@@ -1,0 +1,12 @@
+User: Mehmet, Age: 64
+User: burak, Age: 54
+User: Elif, Age: 43
+User: Melis, Age: 15
+User: & c:/users/sinem/appdata/local/microsoft/windowsapps/python3.13.exe c:/users/sinem/onedrive/masaüstü/projects/practice/prac8_oop.py, Age: & C:/Users/sinem/AppData/Local/Microsoft/WindowsApps/python3.13.exe c:/Users/sinem/OneDrive/Masaüstü/Projects/Practice/prac8_OOP.py
+User: Emine, Age: 33
+User: Ali, Age: la
+User: Ali, Age: 23
+User: & c:/users/sinem/appdata/local/microsoft/windowsapps/python3.13.exe c:/users/sinem/onedrive/masaüstü/projects/practice/user_auth_task/user_auth_task.py, Age: 25
+User: Sinem, Age: 26
+User: Ahmet, Age: 33
+User: Sinem, Age: 25

@@ -1,0 +1,17 @@
+        #Dosyalarla Calisma
+1. Kisim: Dosyalari acma
+
+r modu: Okuma/read (dosya yoksa hata verir)
+w modu: Yazma/write (dosya yoksa olusturur)
+r+ modu: Hem okuma hem Yazma
+a modu: Dosyanin sonuna ekleme
+b modu: binary (png icin ornegin, bit bit okunuyor gibi dusunebiliriz)
+Dosyalari kapatma
+With open yapisi
+
+2. Kisim: Dosyalari Okuma
+read()
+readline()
+readlines()
+
+

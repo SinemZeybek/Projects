@@ -1,0 +1,12 @@
+Sinem, 25
+Sinem, 25
+Ahmet, 33
+Mehmet, 64
+burak, 54
+Elif, 43
+Emine, 33
+Ali, 23
+& c:/users/sinem/appdata/local/microsoft/windowsapps/python3.13.exe c:/users/sinem/onedrive/masaüstü/projects/practice/user_auth_task/user_auth_task.py, 25
+Sinem, 26
+Ahmet, 33
+Sinem, 25
